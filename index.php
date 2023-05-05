@@ -10,11 +10,34 @@ Milestone 3 (BONUS)
 Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
 Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. */
-if ($_GET) {
-    # code...
-}
+
+
+
+//funzione per creare una password in base alla lunghezza selezionata
+
+function generatePassword($length){
+    //tutti i caratteri disponibili
+    $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!&?';
+
+    //return dei caratteri mischiati in base alla lunghezza richiesta con
+    return substr(str_shuffle($str_result),
+    0, $length);
+};
+
+
+
 $pwLength = $_GET['passwordLength'];
-var_dump(strlen($_GET['passwordLength']));
+
+if (is_numeric($pwLength) === true ) {
+    
+    var_dump($pwLength); 
+    var_dump(generatePassword($pwLength));
+    
+}
+else{
+    var_dump('attenzione!, devi inserire un numero!');
+}
+
 
 
 ?>
