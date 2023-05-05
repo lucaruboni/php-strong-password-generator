@@ -10,8 +10,11 @@ Milestone 3 (BONUS)
 Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente.
 Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. */
-
-
+if ($_GET) {
+    # code...
+}
+$pwLength = $_GET['passwordLength'];
+var_dump(strlen($_GET['passwordLength']));
 
 
 ?>
@@ -33,15 +36,30 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
             background-image: url(https://www.mascaradesign.it/wp-content/uploads/2020/10/mascaradesign.it_800x534-750x501.jpg);
             background-size: cover;
             background-repeat: no-repeat;
+            border-radius: 15px;
+            box-shadow: 0 0 15px grey;
         }
         .container_background{
             background-color: rgba(0, 0, 0, 0.438);
+            width: 100%;
+            border-radius: 15px;
+    
         }
         .text_container{
             color: white;
             font-weight: 700;
-
-
+        }
+        .my_col{
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.427);
+        }
+        .my_input{
+            width: 350px;
+            height: 40px;
+        }
+        .my_pw_label{
+            font-size: 1.5rem;
         }
     </style>
     <meta charset="UTF-8">
@@ -54,11 +72,25 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
     
         <div class="app">
             
-            <div class="container">
-                <div class="container_background">
+            <div class="container px-0">
+                <div class="container_background p-0">
                     <div class="text_container text-center ">
                          <h1>"STRONG" PASSWORD GENERATOR</h1>
                          <h3>Genera una Password INsicura</h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="col my_col mx-5">
+                            <form action="" method="get" class="m-5">
+                                <div class="form-group d-flex justify-content-between">
+                                    <label for="passwordLength" class="text-white my_pw_label">Lunghezza Password:</label>
+                                    <input type="text" name="passwordLength" id="passwordLength" class="my_input">
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-5">GENERA</button>
+                                <button type="submit" class="btn btn-light mt-5">ANNULLA</button>    
+                            </form>
+
+                        </div>
                     </div>
                </div>
             </div>
