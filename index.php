@@ -30,12 +30,18 @@ $pwLength = $_GET['passwordLength'];
 
 if (is_numeric($pwLength) === true ) {
     
-    var_dump($pwLength); 
-    var_dump(generatePassword($pwLength));
+    $alert = [
+        'status' => 'success',
+        'message' => 'your password has been generated correctly!',
+    ];
+    
     
 }
 else{
-    var_dump('attenzione!, devi inserire un numero!');
+    $alert = [
+        'status' => 'danger',
+        'message' => 'OPS! Devi inserire la lunghezza della password in numeri!',
+    ];
 }
 
 
@@ -51,6 +57,7 @@ else{
 <html lang="en">
 <head>
     <style>
+        
         .app{
             height: 100vh;
             padding: 100px;
@@ -84,6 +91,13 @@ else{
         .my_pw_label{
             font-size: 1.5rem;
         }
+        .my_password{
+            background-color: black;
+            border: 1px solid white;
+            border-radius: 5px;
+            align-self: center;
+          
+        }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,13 +111,13 @@ else{
             
             <div class="container px-0">
                 <div class="container_background p-0">
-                    <div class="text_container text-center ">
-                         <h1>"STRONG" PASSWORD GENERATOR</h1>
+                    <div class="text_container text-center pt-5 pb-3 ">
+                         <h1 class="pb-3">"STRONG" PASSWORD GENERATOR</h1>
                          <h3>Genera una Password INsicura</h3>
                     </div>
 
-                    <div class="row">
-                        <div class="col my_col mx-5">
+                    <div class="row flex-column">
+                        <div class="col my_col w-75 align-self-center">
                             <form action="" method="get" class="m-5">
                                 <div class="form-group d-flex justify-content-between">
                                     <label for="passwordLength" class="text-white my_pw_label">Lunghezza Password:</label>
@@ -113,6 +127,25 @@ else{
                                 <button type="submit" class="btn btn-light mt-5">ANNULLA</button>    
                             </form>
 
+                        </div>
+
+                        <div class="col px-5 py-5">
+                            <div class="text_container_message">
+                                <?php if (!empty($_GET['passwordLength'])) : ?>
+                                <div class="alert alert-<?= $alert['status']; ?>" role="alert">
+                                    <strong><?= $alert['message']; ?></strong>
+                                </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="col d-flex justify-content-center flex-column mb-5 align-self-center">
+                            <?php if (!empty($_GET['passwordLength'])) : ?>
+                                <h1 class="text-white text-center">Your Password is : </h1>
+                                <h2 class="my_password text-center py-2 px-4 text-white">
+                                    <?= generatePassword($pwLength); ?>
+                                </h2>
+                            <?php endif; ?>    
                         </div>
                     </div>
                </div>
