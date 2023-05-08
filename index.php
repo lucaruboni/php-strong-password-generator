@@ -11,20 +11,10 @@ Invece di visualizzare la password nella index, effettuare un redirect ad una pa
 Milestone 4 (BONUS)
 Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, lettere e simboli. Possono essere scelti singolarmente (es. solo numeri) oppure possono essere combinati fra loro (es. numeri e simboli, oppure tutti e tre insieme). Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali. */
 
+require_once __DIR__ . '/function.php';
 
 
 //funzione per creare una password in base alla lunghezza selezionata
-
-function generatePassword($length){
-    //tutti i caratteri disponibili
-    $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!&?';
-
-    //return dei caratteri mischiati in base alla lunghezza richiesta con
-    return substr(str_shuffle($str_result),
-    0, $length);
-};
-
-
 
 $pwLength = $_GET['passwordLength'];
 
